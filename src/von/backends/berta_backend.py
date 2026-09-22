@@ -22,8 +22,8 @@ from .base import BaseBackend
 
 
 MODEL_REGISTRY = {
-    "von-1.0": "checkpoints/von-modernbert-rlcd" if os.path.exists("checkpoints/von-modernbert-rlcd/config.json") else "wfzyx/von-1.0",
-    "modernbert": "checkpoints/von-modernbert-rlcd" if os.path.exists("checkpoints/von-modernbert-rlcd/config.json") else "wfzyx/von-1.0",
+    "von-1.0": "checkpoints/von-modernbert-rlcd" if os.path.exists("checkpoints/von-modernbert-rlcd/config.json") else "wfzyx/von",
+    "modernbert": "checkpoints/von-modernbert-rlcd" if os.path.exists("checkpoints/von-modernbert-rlcd/config.json") else "wfzyx/von",
     "deberta-v3": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
     "deberta-xxl": "microsoft/deberta-v2-xxlarge-mnli",
 }
@@ -383,8 +383,8 @@ class BertaBackend(BaseBackend):
 
         input_tokens = max(1, (len(state_str) + total_q_chars) // 4)
         output_tokens = len(answers) * 8
-        if model in ("von-latest", "von-preview", "von-1.0.0", "von-1.0", "jev-latest", "jev-preview", None):
-            resolved_model = "von-1.0.0"
+        if model in ("von-latest", "von-preview", "von-1.1.0", "von-1.1", "von-1.0.0", "von-1.0", "jev-latest", "jev-preview", None):
+            resolved_model = "von-1.1.0"
         else:
             resolved_model = model
 

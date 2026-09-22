@@ -94,8 +94,8 @@ class VonEngine:
         questions: Dict[str, Union[Question, Dict[str, Any]]],
         model: Optional[str] = None,
     ) -> SystemOneResponse:
-        if model in ("von-latest", "von-preview", "jev-latest", "jev-preview", None):
-            resolved_model = "von-1.0.0"
+        if model in ("von-latest", "von-preview", "von-1.1.0", "von-1.1", "von-1.0.0", "von-1.0", "jev-latest", "jev-preview", None):
+            resolved_model = "von-1.1.0"
         else:
             resolved_model = model
         return self.backend.evaluate(state=state, questions=questions, model=resolved_model)

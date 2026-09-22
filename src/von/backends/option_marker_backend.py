@@ -72,15 +72,15 @@ class OptionMarkerBackend(BaseBackend):
                     # Download from Hugging Face Hub
                     try:
                         from huggingface_hub import hf_hub_download
-                        cached_pt = hf_hub_download(repo_id="wfzyx/von-1.0", filename="option_marker.pt")
-                        model = OptionMarkerModel(base_model_id="wfzyx/von-1.0")
+                        cached_pt = hf_hub_download(repo_id="wfzyx/von", filename="option_marker.pt")
+                        model = OptionMarkerModel(base_model_id="wfzyx/von")
                         state_dict = torch.load(cached_pt, map_location=self.device, weights_only=True)
                         model.load_state_dict(state_dict, strict=True)
-                        loaded_from = f"Hugging Face Hub 'wfzyx/von-1.0:option_marker.pt' ({cached_pt})"
+                        loaded_from = f"Hugging Face Hub 'wfzyx/von:option_marker.pt' ({cached_pt})"
                     except Exception as exc:
                         raise RuntimeError(
                             f"Failed to load Option-Marker decision weights: could not find local '{pt_path}' "
-                            f"and failed to fetch 'option_marker.pt' from Hugging Face Hub ('wfzyx/von-1.0'). "
+                            f"and failed to fetch 'option_marker.pt' from Hugging Face Hub ('wfzyx/von'). "
                             f"Refusing to run with an untrained random scoring head. Error: {exc}"
                         ) from exc
 

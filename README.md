@@ -242,7 +242,7 @@ print(resp.answers["severity"].score)    # 2.81
 ```typescript
 import { VonClient, choice, noul, score } from "von-sdk";
 
-const client = new VonClient({ baseURL: "http://localhost:8000" });
+const client = new VonClient({ baseURL: "http://localhost:5381" });
 
 const { answers } = await client.systemOne({
   state: { ticket: "Export button crashes settings page on Safari 17.2" },
@@ -328,13 +328,22 @@ decision = two_stage_choice(state="Postgres replica lag exceeded limit", taxonom
 Start the production-ready HTTP server compatible with the `/v1/systemone` specification:
 
 ```bash
-# Launch server on port 8000
-von serve --host 0.0.0.0 --port 8000
+# Launch server on port 5381 (default)
+von serve --host 0.0.0.0 --port 5381
+```
+
+Non-blocking lifecycle via `make` (pidfile + detached log in `output/`):
+```bash
+make start    # background start (PORT=5381, device cuda:1; HF_HOME/HF_TOKEN/VON_BACKEND/VON_DEVICE pass through)
+make status   # liveness + /health probe
+make log      # tail -f output/von-serve.log
+make stop     # kill the detached server
+make e2e      # end-to-end smoke test against the running server
 ```
 
 ### Wire Protocol Verification
 ```bash
-curl -X POST http://localhost:8000/v1/systemone \
+curl -X POST http://localhost:5381/v1/systemone \
   -H "Content-Type: application/json" \
   -d '{
     "model": "von-1.0.0",

@@ -46,6 +46,7 @@ def health_check():
 def list_models():
     model_entries = [
         {"name": "von-latest", "description": "Flagship Von System One Decision Model", "release_date": "2026-09-19"},
+        {"name": "von-1.1.0", "description": "Von-1.1 Stable Release", "release_date": "2026-09-22"},
         {"name": "von-1.0.0", "description": "Von-1.0 Stable Release", "release_date": "2026-09-19"},
         {"name": "von-option-marker", "description": "Von Option-Marker Single-Pass Joint Attention Model", "release_date": "2026-09-20"},
         {"name": "jev-latest", "description": "TypeSafe Jev Compatibility Alias", "release_date": "2026-09-19"},

@@ -31,7 +31,7 @@ export class VonClient {
 
   constructor(options: VonClientOptions = {}) {
     const envBase = typeof process !== "undefined" ? (process.env?.VON_BASE_URL || process.env?.TYPESAFE_BASE_URL) : undefined;
-    this.baseURL = (options.baseURL || envBase || "http://localhost:8000").replace(/\/$/, "");
+    this.baseURL = (options.baseURL || envBase || "http://localhost:5381").replace(/\/$/, "");
 
     const envKey = typeof process !== "undefined" ? (process.env?.VON_API_KEY || process.env?.TYPESAFE_API_KEY) : undefined;
     this.apiKey = options.apiKey || envKey || undefined;

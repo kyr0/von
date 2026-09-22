@@ -14,4 +14,7 @@ data/
 src/von/local_backends/
 js/node_modules/
 
+# Server runtime artifacts (pid/log from make start)
+output/
+
 _vizdoom.ini

@@ -28,7 +28,7 @@ If you are migrating from TypeSafe Jev, simply change the import statement:
 // After (drop-in alias):
 import { TypeSafeClient, choice, noul, score } from "von-sdk";
 
-const client = new TypeSafeClient({ baseURL: "http://localhost:8000" });
+const client = new TypeSafeClient({ baseURL: "http://localhost:5381" });
 ```
 
 ---
@@ -39,7 +39,7 @@ const client = new TypeSafeClient({ baseURL: "http://localhost:8000" });
 import { VonClient, choice, noul, score } from "von-sdk";
 
 const client = new VonClient({
-  baseURL: process.env.VON_BASE_URL || "http://localhost:8000",
+  baseURL: process.env.VON_BASE_URL || "http://localhost:5381",
   apiKey: process.env.VON_API_KEY, // Optional bearer auth
 });
 

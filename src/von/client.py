@@ -7,6 +7,9 @@ import httpx
 from .engine import VonEngine
 from .types import Question, SystemOneResponse
 
+# Default server location; matches the `von serve` default port (see von.cli.DEFAULT_PORT).
+DEFAULT_BASE_URL = "http://localhost:5381"
+
 
 class VonClient:
     """Client for executing Von System One queries."""
@@ -28,7 +31,7 @@ class VonClient:
         self.local = local and (self.base_url is None)
         self.timeout = timeout
         if not self.local and not self.base_url:
-            self.base_url = "http://localhost:8000"
+            self.base_url = DEFAULT_BASE_URL
 
     def system_one(
         self,
@@ -79,7 +82,7 @@ class AsyncVonClient:
         self.local = local and (self.base_url is None)
         self.timeout = timeout
         if not self.local and not self.base_url:
-            self.base_url = "http://localhost:8000"
+            self.base_url = DEFAULT_BASE_URL
 
     async def system_one(
         self,

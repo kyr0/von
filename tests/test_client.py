@@ -16,7 +16,7 @@ def test_von_client_local():
             "is_cancel": noul("Does the user want to cancel?"),
         },
     )
-    assert res.model == "von-1.0.0"
+    assert res.model == "von-1.1.0"
     assert res.answers["action"].choice == "cancel"
     assert res.answers["is_cancel"].noul > 0.5
 
@@ -34,3 +34,10 @@ async def test_async_von_client_local():
         },
     )
     assert res.answers["service"].choice == "database"
+
+
+def test_remote_client_default_base_url(monkeypatch):
+    """Remote clients must default to the `von serve` default port (5381)."""
+    monkeypatch.delenv("VON_BASE_URL", raising=False)
+    assert VonClient(local=False).base_url == "http://localhost:5381"
+    assert AsyncVonClient(local=False).base_url == "http://localhost:5381"

@@ -12,6 +12,9 @@ from .api import rate as api_rate
 from .api import system_one as api_system_one
 from .backends.berta_backend import _detect_device, get_device_description
 
+# Default listen port for `von serve`; client defaults point at the same port.
+DEFAULT_PORT = 5381
+
 
 @click.group()
 @click.version_option(version="1.0.0", prog_name="von")
@@ -22,7 +25,7 @@ def main():
 
 @main.command()
 @click.option("--host", default="0.0.0.0", help="Host interface to bind on.")
-@click.option("--port", default=8000, type=int, help="Port to listen on.")
+@click.option("--port", default=DEFAULT_PORT, type=int, help="Port to listen on.")
 @click.option("--backend", default="option-marker", type=click.Choice(["option-marker", "modernbert", "von-1.0", "marker", "laya", "needle", "berta-v3"]), help="Decision backend to load.")
 @click.option("--device", default="auto", help="Compute device: 'auto', 'cuda', 'rocm', 'mps', 'dml', 'cpu'.")
 @click.option("--reload", is_flag=True, default=False, help="Enable auto-reload.")

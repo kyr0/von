@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Test Von HTTP server using curl (matches TypeSafe API format)
 
-SERVER_URL=${1:-"http://localhost:8000"}
+SERVER_URL=${1:-"http://localhost:5381"}
 
 echo "1. Checking Health..."
 curl -s "${SERVER_URL}/health" | jq .
